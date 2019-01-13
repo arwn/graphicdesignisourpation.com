@@ -1,7 +1,6 @@
 <?php
 session_start();
 include "dbfunc/login.php";
-
 function make_header($current) {
         $pages = array("index", "store", "cart", "help");
         echo '<div class="navbar">';
@@ -14,6 +13,8 @@ function make_header($current) {
 
         }
         login();
+        echo "</ul>\n";
+        echo "</div>\n";
 
 }
 ?>
