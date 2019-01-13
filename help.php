@@ -11,14 +11,12 @@
     <script src="main.js"></script>
 </head>
 <body>
-<div class="navbar">
-        <ul>
-	<li><a href="index.php"><i class="fa fa-home"></i></a></li>
-	<li><a href="store.php">Store</a></li>
-        <li><a href="cart.php">Cart</a></li>
-        <li class="current"><a href="help.php">Help</a></li>
-	</ul>
-</div>
+<?php
+include('navbar.php');
+make_header('help');
+?>
 <div class="shop">shop here</div>
 </body>
 </html>
+
+

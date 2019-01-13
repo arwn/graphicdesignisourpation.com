@@ -11,21 +11,22 @@
     <script src="main.js"></script>
 </head>
 <body>
-<div class="navbar">
-        <ul>
-	<li><a href="index.php"><i class="fa fa-home"></i></a></li>
-	<li class="current"><a href="store.php">Store</a></li>
-        <li><a href="cart.php">Cart</a></li>
-        <li><a href="help.php">Help</a></li>
-	</ul>
-</div>
+<?php
+include('navbar.php');
+make_header('store');
+?>
 <div class="store">
 	<h1>PURCHASE OUR CHEAP SERVICE!</h1>
 	<p>Nonrefundable.</p>
-	<div class="item">This is a store item</div>
-	<div class="item">This is a store item</div>
-	<div class="item">This is a store item</div>
-	<div class="item">This is a store item</div>
+	<?php
+	$files = glob('database/*');
+	foreach($files as $file) {
+		echo '<div class="item">';
+		echo '<h2>' . preg_replace('/database\//', '', $file) . '</h2>';
+		readfile($file);
+		echo '</div>';
+	}
+	?>
 </div>
 </body>
 </html>
