@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('store_filter.php');
+include('navbar.php');
 ?>
 <html>
 <head>
@@ -15,15 +16,14 @@ include('store_filter.php');
 </head>
 <body>
 <?php
-include('navbar.php');
 make_header('store');
 ?>
 <div class="store">
 	<h1>PURCHASE OUR CHEAP SERVICE!</h1>
 	<p>Nonrefundable.</p>
 	<?php
-	
-	//filter_box($all_filters);
+	$all_filters = array('big', 'weeb', '6');
+	store_filter_spawn($all_filters);
 	$filters = array('big');
 	store_filter($filters)
 	?>

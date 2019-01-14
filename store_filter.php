@@ -1,4 +1,14 @@
 <?php
+function store_filter_spawn($all_filters) {
+	echo '<p>Filter:<button type="button">Apply!??????!</button></br>';
+	foreach($all_filters as $filter) {
+		echo $filter.'<input type="checkbox" name="'.$filter;
+		echo '" value="'.$filter.'">';
+		echo '<br />';
+	}
+	echo '</p>';
+}
+
 function put_item($file) {
         echo '<div class="item">';
         echo '<h2>' . preg_replace('/database\//', '', $file) . '</h2>';

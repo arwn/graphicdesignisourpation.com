@@ -17,7 +17,7 @@ session_start();
 include('navbar.php');
 make_header('help');
 ?>
-<div class="shop">shop here</div>
+<div class="store">no</div>
 </body>
 </html>
 
