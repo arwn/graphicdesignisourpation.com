@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('navbar.php');
+include('admin_items.php');
 ?>
 <html>
 <head>
@@ -19,7 +20,7 @@ make_header('admin');
 ?>
 <div class="store">
 <h1>Hello admen.</h1>
-<p>admin page</p>
+<h2>admin page</h2>
 Tags<input type="text" name="t">
 <button type="add">APPLY</button>
 <p>
@@ -37,6 +38,25 @@ User:
 </datalist>
 <button type="Delete">DELET!!!!!@!</button>
 <button type="adminify">adminn pls</button>
+</p>
+<p>
+<hr>
+<h3>Item managenment</h3>
+Store Items:
+<input list="store itoms">
+<datalist id="store itoms">
+<?php   $items = glob('database/*');
+        foreach($items as $item) {
+                echo '<option value="';
+                echo $item;
+                echo '">';
+        }
+?>
+</datalist></br>
+Tags: <input type="text"></br>
+Description: <input type="text"></br>
+<button type="Delete">Del Lete</button>
+<button type="adminify">Apply</button>
 </p>
 </body>
 </html>
