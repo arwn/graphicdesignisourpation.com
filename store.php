@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('store_filter.php');
 ?>
 <html>
 <head>
@@ -21,13 +22,10 @@ make_header('store');
 	<h1>PURCHASE OUR CHEAP SERVICE!</h1>
 	<p>Nonrefundable.</p>
 	<?php
-	$files = glob('database/*');
-	foreach($files as $file) {
-		echo '<div class="item">';
-		echo '<h2>' . preg_replace('/database\//', '', $file) . '</h2>';
-		readfile($file);
-		echo '</div>';
-	}
+	
+	//filter_box($all_filters);
+	$filters = array('big');
+	store_filter($filters)
 	?>
 </div>
 </body>
