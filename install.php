@@ -5,8 +5,9 @@ $file = "users";
 $accounts = array();
 
 $admin = [
-	"login" => "massa",
+	"login" => "masa",
 	"passwd" => hash("whirlpool", "thepassword"),
+	"isadmin" => 1,
 ];
 
 $accounts[] = $admin;

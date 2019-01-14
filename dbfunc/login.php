@@ -1,9 +1,11 @@
 <?php
 session_start();
+include "auth.php";
+include "create.php";
 
 function put_login_form()
 {
-	echo '<form name="login.php" action="store.php" method="POST">';
+	echo '<form name="login.php" action="'.$_SERVER['PHP_SELF'].'" method="POST">';
 	echo 'Username: <input name="login" value="" />';
 	echo 'Password: <input name="passwd" value="" />';
 	echo '<input type="submit" name="submit" value="signin" />';
@@ -14,7 +16,7 @@ function put_login_form()
 function put_welcome()
 {
 	echo "welcome ".$_SESSION['logged_on_user'];
-	echo '<form name="loginout.php" action="store.php" method="POST">';
+	echo '<form name="loginout.php" action="'.$_SERVER['PHP_SELF'].'" method="POST">';
 	echo '<input type="submit" name="logout" value="logout" />';
 	echo '</form>';
 }
@@ -25,7 +27,7 @@ function logout()
 
 }
 
-include "auth.php";
+
 function login(){
 	if (isset($_POST["logout"]) && $_POST["logout"] == "logout")
 	{
@@ -51,14 +53,26 @@ function login(){
 		else
 		{
 			$_SESSION["logged_on_user"] = "";
-			echo "Sorry, Wront Username or password";
+			echo "Sorry, Wrong Username or password";
+			put_login_form();
+		}
+	}
+	else if ($_POST["submit"] == "sign up")
+	{
+		if (signup())
+		{
+			$_SESSION["logged_on_user"] = $_POST["login"];
+			put_welcome();
+		}
+		else
+		{
+			echo "Username already exists or form is blank";
 			put_login_form();
 		}
 	}
 	else
 	{
 		put_login_form();
-
 	}
 }
 

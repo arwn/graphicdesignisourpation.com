@@ -18,28 +18,28 @@ function check_write_account()
 
 	$new_account = [
     "login" => $_POST["login"],
-    "passwd" => hash("whirlpool", $_POST["passwd"]),
+	"passwd" => hash("whirlpool", $_POST["passwd"]),
+	"isadmin" => 0,
 	];
-	
-	$accounts = unserialize(file_get_contents($dir."/".$file));
+
+	$accounts = unserialize(file_get_contents("privdb/users"));
 
 	if (elem_is_set($accounts, $_POST["login"]))
 		return 0;
 	else
 	{
 		$accounts[] = $new_account;
-		file_put_contents($dir."/".$file, serialize($accounts));
+		file_put_contents("privdb/users", serialize($accounts));
 		return 1;
 	}
 }
 
-if ($_POST["submit"] == "OK")
+function signup()
 {
+
 	if (check_write_account())
-		echo "OK\n";
+		return TRUE;
 	else
-		echo "ERROR\n";
+		return FALSE;
 }
-else
-	echo "ERROR\n";
 ?>
