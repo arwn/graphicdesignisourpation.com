@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 ?>
 <html>
 <head>
@@ -16,6 +16,16 @@ session_start();
 include('navbar.php');
 make_header('cart');
 ?>
-<div class="store">shop here</div> <!-- todo: make cart populate -->
+<div class="store">
+	<?php
+		session_start();
+		foreach ($_SESSION['cart'] as $item)
+		{
+			echo $item . " ";
+			echo "<div class='cart_display'"
+		}
+
+	?>
+</div> <!-- todo: make cart populate -->
 </body>
 </html>

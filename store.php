@@ -2,6 +2,32 @@
 session_start();
 include('store_filter.php');
 include('navbar.php');
+
+	$flag = FALSE;
+	if (!isset($_SESSION['cart']))
+		$_SESSION['cart'] = array();
+	if ($_GET['buy'] == "big site")
+	{
+		foreach ($_SESSION['cart'] as $item => &$value)
+			if ($item == "big site")
+			{
+				$value++;
+				$flag = TRUE;
+			}
+		if (!$flag)
+			$_SESSION['cart'][$_GET['buy']] = 1;
+	}
+	else if ($_GET['buy'] == 'good stuff')
+		foreach ($_SESSION['cart'] as $item => &$value)
+			if ($item == "good stuff")
+			{
+				$value++;
+				$flag = TRUE;
+			}
+		if (!$flag)
+			$_SESSION['cart'][$_GET['buy']] = 1;
+	if ($_GET['buy'] == "reset")
+		unset($_SESSION['cart']);
 ?>
 <html>
 <head>
@@ -22,10 +48,12 @@ make_header('store');
 	<h1>PURCHASE OUR CHEAP SERVICE!</h1>
 	<p>Nonrefundable.</p>
 	<?php
-	$all_filters = array('big', 'weeb', '6');
-	store_filter_spawn($all_filters);
-	$filters = array('big');
-	store_filter($filters)
+		$all_filters = array('big', 'weeb', '6');
+		store_filter_spawn($all_filters);
+		$filters = array('big');
+		store_filter($filters);
+
+
 	?>
 </div>
 </body>

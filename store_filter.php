@@ -10,13 +10,15 @@ function store_filter_spawn($all_filters) {
 }
 
 function put_item($file) {
+	$stupid = preg_replace('/database\//', '', $file);
         echo '<div class="item">';
-        echo '<h2>' . preg_replace('/database\//', '', $file) . '</h2>';
+        echo '<h2>' . $stupid  . '</h2>';
 	$fp = fopen($file, 'r');
 	fgets($fp); /* read tags line */
         while (!feof($fp)) {
 		echo fgets($fp);
 	}
+	echo "<a href='http://localhost:8888/store.php?buy=$stupid'><div class'buy_button'>BUY</div></a>";
 	echo '</div>';
 }
 
