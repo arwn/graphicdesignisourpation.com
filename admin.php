@@ -26,7 +26,14 @@ Tags<input type="text" name="t">
 User:
 <input list="users">
 <datalist id="users">
-	<option value="usernamo">
+<?php	$userlist = array("one", "test user", "test 3");
+	foreach($userlist as $user) {
+		echo '<option value="';
+		echo $user;
+		echo '">';
+	}
+?>
+<option value=".$user">
 </datalist>
 <button type="Delete">DELET!!!!!@!</button>
 <button type="adminify">adminn pls</button>
