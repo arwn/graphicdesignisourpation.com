@@ -2,6 +2,7 @@
 session_start();
 include "auth.php";
 include "create.php";
+include "check_admin.php";
 
 function put_login_form()
 {
@@ -19,12 +20,17 @@ function put_welcome()
 	echo '<form name="loginout.php" action="'.$_SERVER['PHP_SELF'].'" method="POST">';
 	echo '<input type="submit" name="logout" value="logout" />';
 	echo '</form>';
+
+	$accounts = unserialize(file_get_contents("privdb/users"));
+	if (check_admin($accounts, $_SESSION['logged_on_user']))
+		echo '<a href="admin.php"> admin page </a>';
 }
 
 function logout()
 {
 	$_SESSION["logged_on_user"] = "";
-
+	header("Location: store.php");
+    die();
 }
 
 
