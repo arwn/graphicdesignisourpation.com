@@ -4,8 +4,6 @@ include('store_filter.php');
 include('navbar.php');
 
 	$flag = FALSE;
-	if (!isset($_SESSION['cart']))
-		$_SESSION['cart'] = array();
 	if ($_GET['buy'] == "big site")
 	{
 		foreach ($_SESSION['cart'] as $item => &$value)
@@ -26,8 +24,6 @@ include('navbar.php');
 			}
 		if (!$flag)
 			$_SESSION['cart'][$_GET['buy']] = 1;
-	if ($_GET['buy'] == "reset")
-		unset($_SESSION['cart']);
 ?>
 <html>
 <head>
